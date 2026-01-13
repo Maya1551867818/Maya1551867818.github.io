@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>倪克斯的童话乐园</title>
+    <style>
+      :root {
+        --bg: #f6f2e9;
+        --ink: #2b2a28;
+        --muted: #6c665c;
+        --accent: #c46a3f;
+        --card: #fffaf2;
+        --border: #e3dacb;
+        --shadow: 0 12px 30px rgba(43, 42, 40, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--accent);
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 28px;
+      }
+
+      nav {
+        display: flex;
+        gap: 18px;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .hero {
+        display: grid;
+        gap: 20px;
+        padding: 32px 0 12px;
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 54px);
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--muted);
+        margin: 0;
+        max-width: 640px;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        padding: 10px 18px;
+        border-radius: 999px;
+        width: fit-content;
+        box-shadow: var(--shadow);
+      }
+
+      .section {
+        margin-top: 40px;
+      }
+
+      .section h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 14px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      footer {
+        padding-bottom: 56px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>倪克斯</strong>
+        <div style="font-size: 13px; color: var(--muted);">童话乐园</div>
+      </div>
+      <nav>
+        <a href="#home">首页</a>
+        <a href="#about">关于</a>
+        <a href="#projects">作品</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <h1>倪克斯的童话乐园</h1>
+        <p>我是倪克斯，欢迎宝宝们来到童话乐园！我会在这里分享一些美妙的童话故事。</p>
+        <a class="cta" href="#projects">看看作品 →</a>
+      </section>
+
+      <section class="section" id="about">
+        <h2>关于</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>结构化表达</h3>
+            <p>用分层与脉络化内容，让读者快速抓住重点。</p>
+          </div>
+          <div class="card">
+            <h3>浪漫想象</h3>
+            <p>相信故事与象征能帮助理解抽象概念。</p>
+          </div>
+          <div class="card">
+            <h3>长期主义</h3>
+            <p>持续积累内容，建立属于自己的知识花园。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h2>作品</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>复变函数习题解答</h3>
+            <p>用更直观的思路拆解典型题型，适合复习与自学。</p>
+          </div>
+          <div class="card">
+            <h3>塔罗牌入门</h3>
+            <p>从象征系统与牌意逻辑出发，建立清晰的学习路径。</p>
+          </div>
+          <div class="card">
+            <h3>神话故事选</h3>
+            <p>挑选神话片段，记录原型与隐喻，作为灵感素材库。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>联系</h2>
+        <a class="cta" href="mailto:1551867818@qq.com">1551867818@qq.com</a>
+      </section>
+    </main>
+
+    <footer>
+      <div>愿每一次灵感都有回声。</div>
+    </footer>
+  </body>
+</html>
