@@ -210,6 +210,28 @@
         background: radial-gradient(circle at top, #f7e9d2, #e8d4b5);
         font-size: 36px;
         color: var(--accent);
+        text-align: left;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 18px;
+      }
+
+      .tarot-back-title {
+        font-size: 16px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .tarot-back-name {
+        font-size: 22px;
+        color: var(--ink);
+      }
+
+      .tarot-back-text {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
       }
 
       .tarot-front {
@@ -310,7 +332,11 @@
             <p class="tarot-intro">轻轻呼吸，点击抽一张今日的指引牌。</p>
             <div class="tarot-stage">
               <button class="tarot-card" id="tarot-card" type="button" aria-label="抽一张塔罗牌">
-                <div class="tarot-face tarot-back">?</div>
+                <div class="tarot-face tarot-back">
+                  <div class="tarot-back-title">卡牌小档案</div>
+                  <div class="tarot-back-name" id="tarot-back-name">等待抽牌</div>
+                  <div class="tarot-back-text" id="tarot-back-text">点击抽一张牌吧。</div>
+                </div>
                 <div class="tarot-face tarot-front">
                   <div class="tarot-name" id="tarot-name">等待抽牌</div>
                   <div class="tarot-meaning" id="tarot-meaning">点击抽一张牌吧。</div>
@@ -366,33 +392,123 @@
     </footer>
     <script>
       const tarotCards = [
-        { name: "愉人", meaning: "新的起点，保持好奇与信任。" },
-        { name: "魔术师", meaning: "专注与行动，资源在你手中。" },
-        { name: "女祭司", meaning: "直觉与沉静，倾听内心。" },
-        { name: "女皇", meaning: "滋养与丰盛，拥抱温柔。" },
-        { name: "皇帝", meaning: "秩序与力量，建立边界。" },
-        { name: "教皇", meaning: "传统与学习，获得指引。" },
-        { name: "恋人", meaning: "选择与连结，跟随心意。" },
-        { name: "战车", meaning: "意志与前进，方向清晰。" },
-        { name: "力量", meaning: "耐心与勇气，温柔克服。" },
-        { name: "隐者", meaning: "独处与洞见，寻找答案。" },
-        { name: "命运之轮", meaning: "变化与机遇，顺势而为。" },
-        { name: "正义", meaning: "平衡与清晰，尊重事实。" },
-        { name: "倒吊人", meaning: "暂停与转念，换个视角。" },
-        { name: "死神", meaning: "结束与更新，旧事放下。" },
-        { name: "节制", meaning: "调和与疗愈，循序渐进。" },
-        { name: "恶魔", meaning: "欲望与束缚，察觉依赖。" },
-        { name: "高塔", meaning: "突变与觉醒，真相显现。" },
-        { name: "星星", meaning: "希望与宁静，信念回归。" },
-        { name: "月亮", meaning: "情绪与迷雾，耐心辨识。" },
-        { name: "太阳", meaning: "喜悦与成长，光明照耀。" },
-        { name: "审判", meaning: "回顾与重生，做出回应。" },
-        { name: "世界", meaning: "完成与圆满，进入新章。" }
+        {
+          name: "愚人",
+          meaning: "新的起点，保持好奇与信任。",
+          history: "象征旅程的第一步，提醒你允许未知与冒险。",
+        },
+        {
+          name: "魔术师",
+          meaning: "专注与行动，资源在你手中。",
+          history: "象征创造力与掌控力，善用已有工具。",
+        },
+        {
+          name: "女祭司",
+          meaning: "直觉与沉静，倾听内心。",
+          history: "象征内在智慧与潜意识，适合静心与观照。",
+        },
+        {
+          name: "女皇",
+          meaning: "滋养与丰盛，拥抱温柔。",
+          history: "象征母性与丰饶，鼓励关怀与滋养。",
+        },
+        {
+          name: "皇帝",
+          meaning: "秩序与力量，建立边界。",
+          history: "象征规则与结构，提醒你稳固基础。",
+        },
+        {
+          name: "教皇",
+          meaning: "传统与学习，获得指引。",
+          history: "象征传统与知识传承，适合求教与学习。",
+        },
+        {
+          name: "恋人",
+          meaning: "选择与连结，跟随心意。",
+          history: "象征关系与选择，提醒你珍视内心的决定。",
+        },
+        {
+          name: "战车",
+          meaning: "意志与前进，方向清晰。",
+          history: "象征克服与前行，保持目标感与掌控。",
+        },
+        {
+          name: "力量",
+          meaning: "耐心与勇气，温柔克服。",
+          history: "象征内在力量，以柔克刚的稳定。",
+        },
+        {
+          name: "隐者",
+          meaning: "独处与洞见，寻找答案。",
+          history: "象征内省与智慧，适合沉静思考。",
+        },
+        {
+          name: "命运之轮",
+          meaning: "变化与机遇，顺势而为。",
+          history: "象征周期与转折，接受流动与变化。",
+        },
+        {
+          name: "正义",
+          meaning: "平衡与清晰，尊重事实。",
+          history: "象征公正与秩序，强调清晰判断。",
+        },
+        {
+          name: "倒吊人",
+          meaning: "暂停与转念，换个视角。",
+          history: "象征暂停与牺牲，提示转换思路。",
+        },
+        {
+          name: "死神",
+          meaning: "结束与更新，旧事放下。",
+          history: "象征转变与重生，释放旧的模式。",
+        },
+        {
+          name: "节制",
+          meaning: "调和与疗愈，循序渐进。",
+          history: "象征平衡与调和，强调节奏与修复。",
+        },
+        {
+          name: "恶魔",
+          meaning: "欲望与束缚，察觉依赖。",
+          history: "象征欲望与依附，提醒觉察限制。",
+        },
+        {
+          name: "高塔",
+          meaning: "突变与觉醒，真相显现。",
+          history: "象征突发改变，打破旧结构。",
+        },
+        {
+          name: "星星",
+          meaning: "希望与宁静，信念回归。",
+          history: "象征疗愈与希望，鼓励信任未来。",
+        },
+        {
+          name: "月亮",
+          meaning: "情绪与迷雾，耐心辨识。",
+          history: "象征潜意识与幻影，提醒辨别真实。",
+        },
+        {
+          name: "太阳",
+          meaning: "喜悦与成长，光明照耀。",
+          history: "象征成功与喜悦，能量充盈。",
+        },
+        {
+          name: "审判",
+          meaning: "回顾与重生，做出回应。",
+          history: "象征觉醒与回应，审视过去并前行。",
+        },
+        {
+          name: "世界",
+          meaning: "完成与圆满，进入新章。",
+          history: "象征完成与整合，迈入新阶段。",
+        }
       ];
 
       const dateEl = document.getElementById("tarot-date");
       const nameEl = document.getElementById("tarot-name");
       const meaningEl = document.getElementById("tarot-meaning");
+      const backNameEl = document.getElementById("tarot-back-name");
+      const backTextEl = document.getElementById("tarot-back-text");
       const cardEl = document.getElementById("tarot-card");
       const drawBtn = document.getElementById("tarot-draw");
       let drawCount = 0;
@@ -402,21 +518,26 @@
       }
 
       let isAnimating = false;
+      let isBackShown = false;
+      let currentCard = tarotCards[0];
 
       function drawCard() {
         if (isAnimating) return;
         isAnimating = true;
 
-        const card = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+        currentCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
 
         if (cardEl) {
           cardEl.classList.remove("is-flipped");
         }
 
         window.setTimeout(() => {
-          if (nameEl) nameEl.textContent = card.name;
-          if (meaningEl) meaningEl.textContent = card.meaning;
+          if (nameEl) nameEl.textContent = currentCard.name;
+          if (meaningEl) meaningEl.textContent = currentCard.meaning;
+          if (backNameEl) backNameEl.textContent = currentCard.name;
+          if (backTextEl) backTextEl.textContent = currentCard.history;
           if (cardEl) cardEl.classList.add("is-flipped");
+          isBackShown = false;
 
           if (drawBtn) {
             drawCount += 1;
@@ -430,7 +551,25 @@
       }
 
       if (drawBtn) drawBtn.addEventListener("click", drawCard);
-      if (cardEl) cardEl.addEventListener("click", drawCard);
+      if (cardEl) {
+        cardEl.addEventListener("click", () => {
+          if (isAnimating) return;
+          isAnimating = true;
+          if (!isBackShown) {
+            cardEl.classList.remove("is-flipped");
+            window.setTimeout(() => {
+              isBackShown = true;
+              isAnimating = false;
+            }, 650);
+            return;
+          }
+          cardEl.classList.add("is-flipped");
+          window.setTimeout(() => {
+            isBackShown = false;
+            isAnimating = false;
+          }, 650);
+        });
+      }
     </script>
   </body>
 </html>
