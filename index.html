@@ -4,6 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>倪克斯的童话乐园</title>
+    <meta
+      name="description"
+      content="倪克斯的童话乐园，分享温柔的童话故事与创作记录。"
+    />
+    <meta property="og:title" content="倪克斯的童话乐园" />
+    <meta
+      property="og:description"
+      content="倪克斯的童话乐园，分享温柔的童话故事与创作记录。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://Maya1551867818.github.io/og-cover.png" />
     <style>
       :root {
         --bg: #f6f2e9;
@@ -17,6 +28,10 @@
 
       * {
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -82,12 +97,18 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--border);
-        background: var(--card);
+        border: 1px solid transparent;
+        background: var(--accent);
+        color: #fff;
         padding: 10px 18px;
         border-radius: 999px;
         width: fit-content;
         box-shadow: var(--shadow);
+      }
+
+      .cta:hover {
+        color: #fff;
+        background: #b45f38;
       }
 
       .section {
@@ -123,6 +144,19 @@
       .card p {
         margin: 0;
         color: var(--muted);
+      }
+
+      .thumb {
+        display: grid;
+        place-items: center;
+        height: 120px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f3e7d3, #f9f4ea);
+        color: var(--accent);
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
       }
 
       footer {
@@ -168,23 +202,35 @@
         <h2>作品</h2>
         <div class="grid">
           <div class="card">
+            <div class="thumb">Complex</div>
             <h3>复变函数习题解答</h3>
-            <p>用更直观的思路拆解典型题型，适合复习与自学。</p>
+            <p>适合自学与复习，提炼常见题型与关键解题思路。</p>
           </div>
           <div class="card">
+            <div class="thumb">Tarot</div>
             <h3>塔罗牌入门</h3>
-            <p>从象征系统与牌意逻辑出发，建立清晰的学习路径。</p>
+            <p>适合初学者，建立象征系统与牌意逻辑的学习路径。</p>
           </div>
           <div class="card">
+            <div class="thumb">Myth</div>
             <h3>神话故事选</h3>
-            <p>挑选神话片段，记录原型与隐喻，作为灵感素材库。</p>
+            <p>适合灵感搜集，精选神话片段并提取原型隐喻。</p>
           </div>
         </div>
       </section>
 
       <section class="section" id="contact">
         <h2>联系</h2>
-        <a class="cta" href="mailto:1551867818@qq.com">1551867818@qq.com</a>
+        <div class="grid">
+          <a class="cta" href="mailto:1551867818@qq.com">邮箱</a>
+          <a
+            class="cta"
+            href="https://github.com/Maya1551867818"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </div>
       </section>
     </main>
 
