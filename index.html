@@ -395,6 +395,7 @@
       const meaningEl = document.getElementById("tarot-meaning");
       const cardEl = document.getElementById("tarot-card");
       const drawBtn = document.getElementById("tarot-draw");
+      let drawCount = 0;
 
       if (dateEl) {
         dateEl.textContent = `今日 · ${new Date().toISOString().slice(0, 10)}`;
@@ -405,6 +406,10 @@
         if (nameEl) nameEl.textContent = card.name;
         if (meaningEl) meaningEl.textContent = card.meaning;
         if (cardEl) cardEl.classList.add("is-flipped");
+        if (drawBtn) {
+          drawCount += 1;
+          drawBtn.textContent = drawCount >= 2 ? "偷偷再抽一张" : "抽一张";
+        }
       }
 
       if (drawBtn) drawBtn.addEventListener("click", drawCard);
