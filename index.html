@@ -405,7 +405,11 @@
         const card = tarotCards[Math.floor(Math.random() * tarotCards.length)];
         if (nameEl) nameEl.textContent = card.name;
         if (meaningEl) meaningEl.textContent = card.meaning;
-        if (cardEl) cardEl.classList.add("is-flipped");
+        if (cardEl) {
+          cardEl.classList.remove("is-flipped");
+          void cardEl.offsetWidth;
+          cardEl.classList.add("is-flipped");
+        }
         if (drawBtn) {
           drawCount += 1;
           drawBtn.textContent = drawCount >= 1 ? "偷偷再抽一张" : "抽一张";
