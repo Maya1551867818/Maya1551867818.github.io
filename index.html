@@ -146,6 +146,32 @@
         color: var(--muted);
       }
 
+      .tarot {
+        display: grid;
+        gap: 12px;
+        padding: 20px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: linear-gradient(145deg, #fffaf2, #f4ead8);
+        box-shadow: var(--shadow);
+      }
+
+      .tarot h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .tarot .date {
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .tarot .meaning {
+        color: var(--muted);
+      }
+
       .thumb {
         display: grid;
         place-items: center;
@@ -199,6 +225,14 @@
       </section>
 
       <section class="section" id="projects">
+        <h2>每日塔罗</h2>
+        <div class="tarot" id="daily-tarot">
+          <div class="date" id="tarot-date">Today</div>
+          <h3 id="tarot-name">正在抽牌...</h3>
+          <div class="meaning" id="tarot-meaning">请稍等片刻。</div>
+        </div>
+
+        <div style="height: 24px;"></div>
         <h2>作品</h2>
         <div class="grid">
           <div class="card">
@@ -237,5 +271,48 @@
     <footer>
       <div>愿每一次灵感都有回声。</div>
     </footer>
+    <script>
+      const tarotCards = [
+        { name: "愚人", meaning: "新的起点，保持好奇与信任。" },
+        { name: "魔术师", meaning: "专注与行动，资源在你手中。" },
+        { name: "女祭司", meaning: "直觉与沉静，倾听内心。" },
+        { name: "女皇", meaning: "滋养与丰盛，拥抱温柔。" },
+        { name: "皇帝", meaning: "秩序与力量，建立边界。" },
+        { name: "教皇", meaning: "传统与学习，获得指引。" },
+        { name: "恋人", meaning: "选择与连结，跟随心意。" },
+        { name: "战车", meaning: "意志与前进，方向清晰。" },
+        { name: "力量", meaning: "耐心与勇气，温柔克服。" },
+        { name: "隐者", meaning: "独处与洞见，寻找答案。" },
+        { name: "命运之轮", meaning: "变化与机遇，顺势而为。" },
+        { name: "正义", meaning: "平衡与清晰，尊重事实。" },
+        { name: "倒吊人", meaning: "暂停与转念，换个视角。" },
+        { name: "死神", meaning: "结束与更新，旧事放下。" },
+        { name: "节制", meaning: "调和与疗愈，循序渐进。" },
+        { name: "恶魔", meaning: "欲望与束缚，察觉依赖。" },
+        { name: "高塔", meaning: "突变与觉醒，真相显现。" },
+        { name: "星星", meaning: "希望与宁静，信念回归。" },
+        { name: "月亮", meaning: "情绪与迷雾，耐心辨识。" },
+        { name: "太阳", meaning: "喜悦与成长，光明照耀。" },
+        { name: "审判", meaning: "回顾与重生，做出回应。" },
+        { name: "世界", meaning: "完成与圆满，进入新章。" }
+      ];
+
+      const today = new Date();
+      const seed =
+        today.getFullYear() * 10000 +
+        (today.getMonth() + 1) * 100 +
+        today.getDate();
+      const card = tarotCards[seed % tarotCards.length];
+
+      const dateEl = document.getElementById("tarot-date");
+      const nameEl = document.getElementById("tarot-name");
+      const meaningEl = document.getElementById("tarot-meaning");
+
+      if (dateEl && nameEl && meaningEl) {
+        dateEl.textContent = today.toISOString().slice(0, 10);
+        nameEl.textContent = card.name;
+        meaningEl.textContent = card.meaning;
+      }
+    </script>
   </body>
 </html>
